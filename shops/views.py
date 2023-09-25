@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from . import forms
 from .models import Shop
 
@@ -7,7 +7,7 @@ from .models import Shop
 # Create your views here.
 def create_shop(request):
     if request.method == 'GET':
-        form = forms.ShopCreationForm(request.GET)
+        form = forms.ShopCreationForm(request.GET or None)
         print('form is created')
         if form.is_valid():
             form.save()
@@ -20,10 +20,9 @@ def create_shop(request):
 
 
 def update_shop(request, s_id):
-    shop = Shop.objects.get(pk=s_id)
+    shop = get_object_or_404(Shop, pk=s_id)
     if request.method == 'GET':
-        form = forms.ShopUpdationForm(request.GET, instance=shop)
-        print('form is created')
+        form = forms.ShopUpdationForm(request.GET or None, instance=shop)
         if form.is_valid():
             form.save()
             return HttpResponse('updated successfully')
