@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+</head>
+<body>
+{% block content %}
+  <p> Welcome to home...</p>
+    <a href="{% url 'create-shop' %}"> Add new Shop</a>
+    <br>
+    <br>
+    <br>    
+br
+    {% for s in shops %}
+        Shop: {{ s.id }}<br>
+        {{ s.name }}<br>
+        {{ s.address }}<br>
+        {{ s.email }}<br>
+        <a href="{% url 'update-shop' s.id %}" > update shop</a> <br>
+        <a href="{% url 'delete-shop' s.id %}" > delete shop</a> <br>
+        <br>
+    {% endfor %}
+{% endblock %}
+</body>
+</html>
