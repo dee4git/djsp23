@@ -1,6 +1,6 @@
 from django import forms
 
-from shops.models import Shop
+from shops.models import Shop, Product
 
 
 class ShopCreationForm(forms.ModelForm):
@@ -13,6 +13,7 @@ class ShopCreationForm(forms.ModelForm):
             'email',
         ]
 
+
 class ShopUpdationForm(forms.ModelForm):
     class Meta:
         model = Shop
@@ -21,4 +22,23 @@ class ShopUpdationForm(forms.ModelForm):
             'address',
             'phone',
             'email',
+        ]
+
+
+class ProductCreationForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = [
+            'name',
+            'quantity',
+            'price',
+        ]
+
+class ProductUpdationForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = [
+            'name',
+            'quantity',
+            'price',
         ]

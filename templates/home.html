@@ -18,6 +18,7 @@
         Address: {{ s.address }}<br>
         Phone: {{ s.phone }}<br>
         Email: {{ s.email }}<br>
+        <a href="{% url 'view-products' s.id %}" > view products</a> <br>
         <a href="{% url 'update-shop' s.id %}" > update shop</a> <br>
         <a href="{% url 'delete-shop' s.id %}" > delete shop</a> <br>
         <br>

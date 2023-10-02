@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>products</title>
+</head>
+<body>
+{% block content %}
+
+
+<h1>{{ shop.name }} Products</h1>
+<a href="{% url 'create-product' shop.id %}">Add new products</a><br>
+    {% for p in products %}
+        Name: {{ p.name }}<br>
+        Price: {{ p.price }}<br>
+        Qty: {{ p.quantity }}<br>
+        <a href="{% url 'update-product' p.id %}">Update Product</a>
+        <br>
+        <br>
+        <br>
+    {% endfor %}
+{% endblock %}
+</body>
+</html>
